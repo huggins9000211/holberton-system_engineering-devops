@@ -1,2 +1,2 @@
 #!/bin/bash
-perl -pe "s/A/Z/g" data.txt | perl -pe "s/e/g" 
+perl -pe "s/A/Z/g" data.txt | perl -pe "s/c/e/g" 
