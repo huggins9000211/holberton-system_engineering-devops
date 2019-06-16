@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -t1 | nl --number-separator=- | head 
+ls -1t | head 
