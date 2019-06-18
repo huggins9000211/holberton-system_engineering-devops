@@ -1,2 +1,2 @@
 #!/bin/bash
-expr 128 + $TRUEKNOWLEDGE | cat -e
+echo $((TRUEKNOWLEDGE+128))
