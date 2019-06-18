@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $PATH | tr ':' '\n' | grep -cP '\S'
+echo $PATH | tr ':' '\n' | wc -l
