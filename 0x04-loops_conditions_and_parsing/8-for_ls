@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times
-for x in $(ls)
+for x in *
 do
-	echo $x | cut -f2 -d"-"
+	echo "$x" | cut -f2 -d"-"
 done
