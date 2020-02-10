@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # this is a comment
 NAME=$(pgrep 4-to_infinity_and_beyond)
-kill $NAME
+kill "$NAME"
