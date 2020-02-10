@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # this is a comment
-trap "echo I am invincible!!!" EXIT
+trap "echo I am invincible!!!" SIGTERM
 i=0
 while [ $i -lt 1 ]
 do
