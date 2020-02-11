@@ -17,5 +17,9 @@ _quit()
 trap _term SIGTERM
 trap _int SIGINT
 trap _quit SIGQUIT
-
 echo $$ > /var/run/holbertonscript.pid
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+done
