@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # this is a comment
 trap "echo \"I am invincible!!!\"" SIGTERM
-i=0
-while [ $i -lt 1 ]
+while true
 do
 	echo "To infinity and beyond"
 	sleep 2
