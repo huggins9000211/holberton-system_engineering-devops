@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#test
+nc -l 98
