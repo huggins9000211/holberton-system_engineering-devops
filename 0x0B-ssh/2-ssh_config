@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #keygen
-Host ubuntu
-    Hostname 35.243.187.246
+Host holberton
+    Hostname 34.73.26.158
     User ubuntu
     IdentityFile ~/.ssh/holberton
     PasswordAuthentication no
