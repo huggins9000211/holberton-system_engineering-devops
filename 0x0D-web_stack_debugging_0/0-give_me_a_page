@@ -2,3 +2,4 @@
 #bug fix
 sudo docker exec -ti d70296a170b2 /bin/bash
 sudo service apache2 start
+exit
