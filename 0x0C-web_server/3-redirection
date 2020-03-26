@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 #test
-
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo chmod 777 /var/www/html/index.nginx-debian.html
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
 redirect="\n\tserver_name anthonyhuggins.tech;\n\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
 sudo sed -i "37i\ $redirect" /etc/nginx/sites-available/default
-sudo /etc/init.d/nginx start
+sudo service nginx start
