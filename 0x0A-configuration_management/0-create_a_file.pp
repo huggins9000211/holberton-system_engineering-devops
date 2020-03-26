@@ -1,3 +1,4 @@
+#make file
 file { '/tmp/holberton':
   path    => '/tmp/holberton',
   mode    => '0744',
