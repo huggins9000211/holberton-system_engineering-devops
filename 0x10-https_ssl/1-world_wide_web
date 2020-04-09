@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#test
+# shellcheck disable=SC2086
+getstuf () {
+    record=$(dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | awk 'FNR == 2 {print $4}')
+    theip=$(dig "$1"."$2" | grep -A1 'ANSWER SECTION:' | awk 'FNR == 2 {print $5}')
+    echo "The subdomain $1 is a $record record and points to $theip"
+}
+if [ "$#" -ne 2 ]; then
+    getstuf "www" "$1"
+    getstuf "lb-01" "$1"
+    getstuf "web-01" "$1"
+    getstuf "web-02" "$1"
+else
+    getstuf "$2" "$1"
+fi
