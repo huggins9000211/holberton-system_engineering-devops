@@ -4,7 +4,7 @@ if __name__ == "__main__":
     import json
     import requests
     import sys
-    
+
     x = requests.get('https://jsonplaceholder.typicode.com/todos')
     nameReq = requests.get(
         'https://jsonplaceholder.typicode.com/users/{}'.format(sys.argv[1]))
