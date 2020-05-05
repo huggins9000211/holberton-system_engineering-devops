@@ -9,7 +9,7 @@ if __name__ == "__main__":
     completedCount = 0
     x = requests.get('https://jsonplaceholder.typicode.com/todos')
     compledTasks = []
-    myDict = {2: []}
+    myDict = {int(sys.argv[1]): []}
     myList = []
     for y in json.loads(x.text):
         if str(y['userId']) == sys.argv[1]:
