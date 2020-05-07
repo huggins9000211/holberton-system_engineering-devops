@@ -13,7 +13,7 @@ def top_ten(subreddit):
         'From': 'youremail@domain.com'
     }
     x = requests.get(url, headers=headers, allow_redirects=False)
-    
+
     if x.status_code == 200:
         for y in range(0, 10):
             print(json.loads(x.text)['data']['children'][y]['data']['title'])
