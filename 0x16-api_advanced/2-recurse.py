@@ -15,26 +15,25 @@ def recurse(subreddit, hot_list=[], after='first'):
     data = {
         'after': after
     }
-    if after:
-        if after == 'first':
-            x = requests.get(url, headers=headers, allow_redirects=False)
-            if x.status_code == 200:
-                for y in json.loads(x.text)['data']['children']:
-                    hot_list.append(y['data']['title'])
-                # print(json.loads(x.text))
-                print(hot_list)
+    if after == 'first':
+        x = requests.get(url, headers=headers, allow_redirects=False)
+        if x.status_code == 200:
+            for y in json.loads(x.text)['data']['children']:
+                hot_list.append(y['data']['title'])
+            if json.loads(x.text)['data']['after']:
                 return recurse(subreddit, hot_list, json.loads(
                     x.text)['data']['after'])
             else:
-                return('None')
+                return hot_list
         else:
-            x = requests.get(url, headers=headers,
-                             allow_redirects=False, data=data)
-            for y in json.loads(x.text)['data']['children']:
-                hot_list.append(y['data']['title'])
-                # print(json.loads(x.text))
-                print(len(hot_list))
-                return recurse(subreddit, hot_list, json.loads(
-                    x.text)['data']['after'])
+            return(None)
     else:
-        return (hot_list)
+        x = requests.get(url, headers=headers,
+                         allow_redirects=False, params=data)
+        for y in json.loads(x.text)['data']['children']:
+            hot_list.append(y['data']['title'])
+        if json.loads(x.text)['data']['after']:
+            return recurse(subreddit, hot_list, json.loads(
+                x.text)['data']['after'])
+        else:
+            return hot_list
