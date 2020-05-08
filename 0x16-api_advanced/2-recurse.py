@@ -5,17 +5,36 @@ import requests
 import sys
 
 
-def top_ten(subreddit):
+def recurse(subreddit, hot_list=[], after='first'):
     """ test """
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     headers = {
         'User-Agent': 'My User Agent 1.0',
         'From': 'youremail@domain.com'
     }
-    x = requests.get(url, headers=headers, allow_redirects=False)
-    
-    if x.status_code == 200:
-        for y in range(0, 10):
-            print(json.loads(x.text)['data']['children'][y]['data']['title'])
+    data = {
+        'after': after
+    }
+    if after:
+        if after == 'first':
+            x = requests.get(url, headers=headers, allow_redirects=False)
+            if x.status_code == 200:
+                for y in json.loads(x.text)['data']['children']:
+                    hot_list.append(y['data']['title'])
+                # print(json.loads(x.text))
+                print(hot_list)
+                return recurse(subreddit, hot_list, json.loads(
+                    x.text)['data']['after'])
+            else:
+                return('None')
+        else:
+            x = requests.get(url, headers=headers,
+                             allow_redirects=False, data=data)
+            for y in json.loads(x.text)['data']['children']:
+                hot_list.append(y['data']['title'])
+                # print(json.loads(x.text))
+                print(len(hot_list))
+                return recurse(subreddit, hot_list, json.loads(
+                    x.text)['data']['after'])
     else:
-        print('None')
+        return (hot_list)
